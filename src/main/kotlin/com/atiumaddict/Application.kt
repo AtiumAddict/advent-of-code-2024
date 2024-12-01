@@ -1,9 +1,12 @@
 package com.atiumaddict
 
+import com.atiumaddict.adventofcode.day01.solveDay01First
+import com.atiumaddict.adventofcode.day01.solveDay01Second
 import io.ktor.server.application.*
 
-fun main(args: Array<String>) {
-    io.ktor.server.netty.EngineMain.main(args)
+fun main() {
+    println(solveDay01First())
+    println(solveDay01Second())
 }
 
 fun Application.module() {

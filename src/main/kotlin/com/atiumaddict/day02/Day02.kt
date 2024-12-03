@@ -1,13 +1,12 @@
-package com.atiumaddict.adventofcode.day01
+package com.atiumaddict.adventofcode.day02
 
-import java.io.File
 import kotlin.math.abs
 
 
-fun solveDay02First(): Long {
-    val lines = parseLines02()
+fun solveDay02First(lines: List<String>): Long {
+    val parsedLines = parseLines02(lines)
     var safeLines = 0L
-    for (line in lines) {
+    for (line in parsedLines) {
         if (lineIsSafe(line)) {
             safeLines++
         }
@@ -25,10 +24,10 @@ private fun lineIsSafe(line: List<Int>): Boolean {
     return true
 }
 
-fun solveDay02Second(): Long {
-    val lines = parseLines02()
+fun solveDay02Second(lines: List<String>): Long {
+    val parsedLines = parseLines02(lines)
     var safeLines = 0L
-    for (line in lines) {
+    for (line in parsedLines) {
         if (lineIsSafeWithLevelTolerance(line, 1)) {
             safeLines++
         }
@@ -70,14 +69,12 @@ private fun isLevelTransitionSafe(
     return true
 }
 
-fun parseLines02(): List<List<Int>> {
-    val inputFile = File("src/main/kotlin/com/atiumaddict/day02/finalInput.txt")
-
-    val lines = arrayListOf<List<Int>>()
-    inputFile.readLines().forEach { line ->
+fun parseLines02(lines: List<String>): List<List<Int>> {
+    val parsedLines = mutableListOf<List<Int>>()
+    lines.forEach { line ->
         val numbers = line.split("\\s+".toRegex()).map { it.trim().toInt() }
-        lines.add(numbers)
+        parsedLines.add(numbers)
     }
-    return lines
+    return parsedLines
 }
 

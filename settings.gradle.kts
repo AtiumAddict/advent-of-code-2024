@@ -1,1 +1,1 @@
-rootProject.name = "ktor-sample"
+rootProject.name = "advent-of-code-2024"

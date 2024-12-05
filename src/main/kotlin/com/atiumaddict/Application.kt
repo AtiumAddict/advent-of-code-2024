@@ -1,28 +1,36 @@
 package com.atiumaddict
 
-import com.atiumaddict.adventofcode.day02.solveDay02First
-import com.atiumaddict.adventofcode.day02.solveDay02Second
-import com.atiumaddict.day04.solveDay04First
-import com.atiumaddict.day04.solveDay04Second
-import io.ktor.server.application.*
+import com.atiumaddict.day05.solveDay05First
+import com.atiumaddict.day05.solveDay05Second
 import java.io.File
-import kotlin.system.measureTimeMillis
 
 fun main() {
-    println("Advent of Code 2024")
-    val lines = File("src/main/kotlin/com/atiumaddict/day04/finalInput.txt").readLines()
-
-    val time1 = measureTimeMillis {
-        println("Day 04 First Solution: ${solveDay04First(lines)}")
-    }
-    println("Time taken for Day 04 First Solution: $time1 ms")
-    val time2 = measureTimeMillis {
-        println("Day 04 Second Solution: ${solveDay04Second(lines)}")
-    }
-
-    println("Time taken for Day 04 Second Solution: $time2 ms")
-
+    solve()
 }
 
-fun Application.module() {
+fun solve() {
+    println("Advent of Code 2024")
+    val lines = File("src/main/kotlin/com/atiumaddict/day05/testInput.txt").readLines()
+
+    val iterations = 1
+    var totalTime1 = 0L
+    var totalTime2 = 0L
+
+    repeat(iterations) {
+        val start1 = System.nanoTime()
+        solveDay05First(lines)
+        totalTime1 += System.nanoTime() - start1
+
+        val start2 = System.nanoTime()
+        solveDay05Second(lines)
+        totalTime2 += System.nanoTime() - start2
+    }
+
+    val averageTime1 = totalTime1 / iterations
+    val averageTime2 = totalTime2 / iterations
+
+    println("Day 05 First Solution: ${solveDay05First(lines)}")
+    println("Day 05 Second Solution: ${solveDay05Second(lines)}")
+    println("Average time taken for Day 05 First Solution (without reading the file) in $iterations iterations: $averageTime1 ns")
+    println("Average time taken for Day 05 Second Solution  (without reading the file) in $iterations iterations: $averageTime2 ns")
 }

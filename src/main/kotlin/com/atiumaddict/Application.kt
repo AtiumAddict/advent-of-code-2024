@@ -10,9 +10,9 @@ fun main() {
 
 fun solve() {
     println("Advent of Code 2024")
-    val lines = File("src/main/kotlin/com/atiumaddict/day05/testInput.txt").readLines()
+    val lines = File("src/main/kotlin/com/atiumaddict/day05/finalInput.txt").readLines()
 
-    val iterations = 1
+    val iterations = 10000
     var totalTime1 = 0L
     var totalTime2 = 0L
 

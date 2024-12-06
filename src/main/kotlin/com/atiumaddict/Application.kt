@@ -13,7 +13,7 @@ fun solve() {
     val lines = File("src/main/kotlin/com/atiumaddict/day06/finalInput.txt").readLines()
 
     val iterations = 1
-    var totalTime1 = 0L
+    var totalTime1 = 1L
     var totalTime2 = 0L
 
     repeat(iterations) {

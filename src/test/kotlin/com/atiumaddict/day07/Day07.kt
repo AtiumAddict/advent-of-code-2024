@@ -1,23 +1,21 @@
 package com.atiumaddict.day07
 
-import kotlin.test.Test
-import kotlin.test.assertEquals
+import io.kotest.core.spec.style.FunSpec
+import io.kotest.matchers.shouldBe
 
-class CalculateTest {
+class CalculateTest :
+  FunSpec({
+    test("should correctly calculate the result for addition and multiplication") {
+      val numbers = listOf(81L, 40L, 27L)
+      val combination = charArrayOf('+', '*')
+      val result: Long = calculate(numbers, combination)
+      result shouldBe 3267L
+    }
 
-  @Test
-  fun testAdditionAndMultiplication() {
-    val numbers = listOf(81L, 40L, 27L)
-    val combination = charArrayOf('+', '*')
-    val result: Long = calculate(numbers, combination)
-    assertEquals(3267L, result)
-  }
-
-  @Test
-  fun testAdditionMultiplicationAndConcatenation() {
-    val numbers = listOf(6L, 8L, 6L, 15L)
-    val combination = charArrayOf('*', '|', '*')
-    val result: Long = calculate(numbers, combination)
-    assertEquals(7290, result)
-  }
-}
+    test("should correctly calculate the result for addition, multiplication, and concatenation") {
+      val numbers = listOf(6L, 8L, 6L, 15L)
+      val combination = charArrayOf('*', '|', '*')
+      val result: Long = calculate(numbers, combination)
+      result shouldBe 7290
+    }
+  })

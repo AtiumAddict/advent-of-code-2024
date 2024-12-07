@@ -31,6 +31,6 @@ fun solve() {
 
     println("Day 07 First Solution: ${solveDay07First(lines)}")
     println("Day 07 Second Solution: ${solveDay07Second(lines)}")
-    println("Average time taken for Day 07 First Solution (without reading the file) in $iterations iterations: $averageTime1 ns")
-    println("Average time taken for Day 07 Second Solution  (without reading the file) in $iterations iterations: $averageTime2 ns")
+    println("Average time taken for Day 07 First Solution (without reading the file) in $iterations iterations: ${String.format("%,d", averageTime1)} ns")
+    println("Average time taken for Day 07 Second Solution  (without reading the file) in $iterations iterations: ${String.format("%,d", averageTime2)} ns")
 }

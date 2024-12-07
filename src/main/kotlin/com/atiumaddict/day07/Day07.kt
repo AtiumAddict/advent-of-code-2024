@@ -9,13 +9,9 @@ fun solveDay07First(lines: List<String>): Long {
     for (equation in equations) {
         val testValue = equation.first
         val numbers = equation.second
-        val allPossibleCombinationsOfOperations = getCombinations(numbers.size - 1, operators)
-        for (combination in allPossibleCombinationsOfOperations) {
-            val result = calculate(numbers, combination)
-            if (result == testValue) {
-                sumOfTestValues += testValue
-                break
-            }
+        val hasCorrectSolution = findCorrectCombination(numbers, testValue, operators)
+        if (hasCorrectSolution) {
+            sumOfTestValues += testValue
         }
     }
     return sumOfTestValues
@@ -34,22 +30,31 @@ fun calculate(numbers: List<Long>, combination: CharArray): Long {
     return result
 }
 
-fun getCombinations(numberOfOperators: Int, operators: CharArray): List<CharArray> {
+fun findCorrectCombination(numbers: List<Long>, testValue: Long, operators: CharArray): Boolean {
     val combinations = arrayListOf<CharArray>()
+    val numberOfOperators = numbers.size - 1
 
-    fun generateCombination(current: CharArray, depth: Int) {
+    fun generateCombination(current: CharArray, depth: Int): Boolean {
         if (depth == numberOfOperators) {
+            val result = calculate(numbers, current)
+            if (result == testValue) {
+                return true
+            }
             combinations.add(current.clone())
-            return
+            return false
         }
         for (operator in operators) {
             current[depth] = operator
-            generateCombination(current, depth + 1)
+            val isCorrect = generateCombination(current, depth + 1)
+            if (isCorrect) {
+                return true
+            }
         }
+        return false
     }
 
-    generateCombination(CharArray(numberOfOperators), 0)
-    return combinations
+    val hasCorrectSolution = generateCombination(CharArray(numberOfOperators), 0)
+    return hasCorrectSolution
 }
 
 val operatorsWithConcat = charArrayOf('+', '*', '|')
@@ -60,13 +65,9 @@ fun solveDay07Second(lines: List<String>): Long {
     for (equation in equations) {
         val testValue = equation.first
         val numbers = equation.second
-        val allPossibleCombinationsOfOperations = getCombinations(numbers.size - 1, operatorsWithConcat)
-        for (combination in allPossibleCombinationsOfOperations) {
-            val result = calculate(numbers, combination)
-            if (result == testValue) {
-                sumOfTestValues += testValue
-                break
-            }
+        val hasCorrectSolution = findCorrectCombination(numbers, testValue, operatorsWithConcat)
+        if (hasCorrectSolution) {
+            sumOfTestValues += testValue
         }
     }
     return sumOfTestValues

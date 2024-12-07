@@ -22,7 +22,3 @@ class CalculateTest {
         assertEquals(7290, result)
     }
 }
-
-class CalculateWithConcatTest {
-
-}

@@ -17,7 +17,7 @@ fun solveDay08First(lines: List<String>): Long {
 
         for (pair in entry.value.withIndex()) {
             for (otherPair in entry.value.withIndex()) {
-                if (pair.index == otherPair.index) continue
+                if (pair.index >= otherPair.index) continue
                 val antinodePositions = findAntinodes(pair.value, otherPair.value, listOfCharArrays)
                 antinodes.addAll(antinodePositions)
             }
@@ -67,13 +67,12 @@ fun solveDay08Second(lines: List<String>): Long {
         for (pair in entry.value.withIndex()) {
             antinodes.add(pair.value)
             for (otherPair in entry.value.withIndex()) {
-                if (pair.index == otherPair.index) continue
+                if (pair.index >= otherPair.index) continue
                 val antinodePositions = findAntinodesWithResonance(pair.value, otherPair.value, listOfCharArrays)
                 antinodes.addAll(antinodePositions)
             }
         }
     }
-    println(antinodes)
     return antinodes.size.toLong()
 }
 

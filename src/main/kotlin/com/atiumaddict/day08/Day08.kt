@@ -13,9 +13,8 @@ fun solveDay08First(lines: List<String>): Long {
         }
     }
     for (entry in frequencies) {
-        if (entry.value.size == 1) {
-            continue
-        }
+        if (entry.value.size == 1) continue
+
         for (pair in entry.value.withIndex()) {
             for (otherPair in entry.value.withIndex()) {
                 if (pair.index == otherPair.index) continue
@@ -63,9 +62,8 @@ fun solveDay08Second(lines: List<String>): Long {
         }
     }
     for (entry in frequencies) {
-        if (entry.value.size == 1) {
-            continue
-        }
+        if (entry.value.size == 1) continue
+
         for (pair in entry.value.withIndex()) {
             antinodes.add(pair.value)
             for (otherPair in entry.value.withIndex()) {
@@ -93,12 +91,12 @@ fun findAntinodesWithResonance(
         secondFrequency.first - firstFrequency.first,
         secondFrequency.second - firstFrequency.second
     )
-    antinodes = addAntinode(firstFrequency, firstDistance, lines, antinodes)
-    antinodes = addAntinode(secondFrequency, secondDistance, lines, antinodes)
+    antinodes = addResonances(firstFrequency, firstDistance, lines, antinodes)
+    antinodes = addResonances(secondFrequency, secondDistance, lines, antinodes)
     return antinodes
 }
 
-private fun addAntinode(
+private fun addResonances(
     frequency: Pair<Int, Int>,
     distances: Pair<Int, Int>,
     lines: List<CharArray>,

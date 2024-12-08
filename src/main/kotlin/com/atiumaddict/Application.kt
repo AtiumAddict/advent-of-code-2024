@@ -30,8 +30,8 @@ fun solve() {
     val averageTime1 = totalTime1 / iterations
     val averageTime2 = totalTime2 / iterations
 
-    println("Day 08 First Solution: ${solveDay08First(lines)}")
-    println("Day 08 Second Solution: ${solveDay08Second(lines)}")
+    println("Day 08 First Part: ${solveDay08First(lines)}")
+    println("Day 08 Second Part: ${solveDay08Second(lines)}")
     println("Average time taken for Day 08 (without reading the file) in $iterations iterations:")
     println("First Solution: ${String.format("%,d", averageTime1)} ns")
     println("Second Solution: ${String.format("%,d", averageTime2)} ns")

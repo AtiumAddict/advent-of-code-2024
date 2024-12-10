@@ -5,7 +5,6 @@ fun solveDay10First(lines: List<String>): Long {
         row.withIndex()
             .filter { it.value == '0' }
             .map { col ->
-                // For each trailhead, find unique 9s it can reach
                 findNines(Pair(r, col.index), -1, mutableSetOf(), lines).size
             }
     }.flatten().sum().toLong()
@@ -16,14 +15,14 @@ val directions = listOf(Pair(-1, 0), Pair(1, 0), Pair(0, -1), Pair(0, 1))
 
 fun findNines(
     current: Pair<Int, Int>,
-    previousHeight: Int,
+    currentHeight: Int,
     visited: MutableSet<Pair<Int, Int>>,
     lines: List<String>
 ): Set<Pair<Int, Int>> {
     val (r, c) = current
     if (r !in lines.indices || c !in lines[r].indices ||
         current in visited ||
-        lines[r][c].digitToInt() != previousHeight + 1
+        lines[r][c].digitToInt() != currentHeight + 1
     ) {
         return emptySet()
     }
@@ -41,7 +40,6 @@ fun solveDay10Second(lines: List<String>): Long {
         row.withIndex()
             .filter { it.value == '0' }
             .map { col ->
-                // For each trailhead, find unique 9s it can reach
                 countTrails(Pair(r, col.index), -1, lines, 0)
             }
     }.flatten().sum().toLong()
@@ -49,13 +47,13 @@ fun solveDay10Second(lines: List<String>): Long {
 
 fun countTrails(
     current: Pair<Int, Int>,
-    previousHeight: Int,
+    currentHeight: Int,
     lines: List<String>,
     countOfNines: Int,
     comingFrom: Pair<Int, Int> = Pair(-1, -1)
 ): Int {
     if (current.first !in lines.indices || current.second !in 0 until lines[0].length ||
-        lines[current.first][current.second].digitToInt() != previousHeight + 1
+        lines[current.first][current.second].digitToInt() != currentHeight + 1
     ) {
         return 0
     }

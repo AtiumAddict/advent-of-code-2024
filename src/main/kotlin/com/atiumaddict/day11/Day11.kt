@@ -1,6 +1,7 @@
 package com.atiumaddict.day11
 
 fun solveDay11First(lines: List<String>): Long {
+    cache.clear()
     val stones = parseLines11(lines)
     return stones.sumOf { blinkOnStoneWithMemoization(it, 25) }
 }
@@ -48,6 +49,7 @@ fun splitDigits(stone: Long): List<Long> {
 }
 
 fun solveDay11Second(lines: List<String>): Long {
+    cache.clear()
     val stones = parseLines11(lines)
     return stones.sumOf { blinkOnStoneWithMemoization(it, 75) }
 }

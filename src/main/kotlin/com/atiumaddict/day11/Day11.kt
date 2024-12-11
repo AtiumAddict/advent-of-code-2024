@@ -14,7 +14,10 @@ fun countStonesAfterBlinks(stones: List<Long>, numberOfBlinks: Int): Long {
     return currentStones.size.toLong()
 }
 
-private fun blinkOnStones(
+/**
+ * @deprecated - too slow
+ */
+fun blinkOnStones(
     stones: List<Long>,
     numberOfBlinks: Int
 ): List<Long> {

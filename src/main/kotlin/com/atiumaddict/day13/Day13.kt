@@ -53,7 +53,8 @@ private fun findClawPosition(
     return Pair(clawPositionX, clawPositionY)
 }
 
-val additive = 10000000000000
+const val additive = 10000000000000
+
 fun solveDay13Second(lines: List<String>): Long {
     val machines = getMachines(lines)
     var totalTokens = 0L
